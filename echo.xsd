@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ECHO main file 
+  
+  This RELAX NG compact schema ("ECHO Schema") defines the XML format 
+  of the MPDL project at the Max Planck Institute for the History of Science
+  (see https://itgroup.mpiwg-berlin.mpg.de:8080/tracs/mpdl-project-content)
+  
+  authors: Wolfgang Schmidle, Malcolm D. Hyman
+  Copyright © 2009, 2010 Max Planck Institute for the History of Science, Berlin, Germany
+  
+  The ECHO Schema is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+<!-- namespace for data entry structures that will be removed in the course of processing -->
+<!-- standard W3C namespaces -->
+<!-- MathML -->
+<!-- Dublin Core metadata -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.mpiwg-berlin.mpg.de/ns/echo/1.0/" xmlns:de="http://www.mpiwg-berlin.mpg.de/ns/de/1.0/" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:echo="http://www.mpiwg-berlin.mpg.de/ns/echo/1.0/" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcterms="http://purl.org/dc/terms" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <xs:include schemaLocation="echo-start.xsd"/>
+  <xs:include schemaLocation="echo-text.xsd"/>
+  <xs:include schemaLocation="echo-block.xsd"/>
+  <xs:include schemaLocation="echo-content.xsd"/>
+  <xs:include schemaLocation="echo-datatype.xsd"/>
+  <xs:include schemaLocation="echo-div.xsd"/>
+  <xs:include schemaLocation="echo-milestone.xsd"/>
+  <xs:include schemaLocation="echo-float.xsd"/>
+  <xs:include schemaLocation="echo-note.xsd"/>
+  <xs:include schemaLocation="echo-figure.xsd"/>
+  <xs:include schemaLocation="echo-handwritten.xsd"/>
+  <xs:include schemaLocation="echo-textflows.xsd"/>
+  <xs:include schemaLocation="echo-block-scholarly.xsd"/>
+  <xs:include schemaLocation="echo-gap.xsd"/>
+  <xs:include schemaLocation="echo-mathematics.xsd"/>
+  <xs:include schemaLocation="echo-content-scholarly.xsd"/>
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://purl.org/dc/terms" schemaLocation="dcterms.xsd"/>
+  <xs:import namespace="http://www.mpiwg-berlin.mpg.de/ns/de/1.0/" schemaLocation="echo-de.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="echo-import-mathml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="echo-import-xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:simpleType name="echo.version">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="1.0RC"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- core modules -->
+  <!-- text structure -->
+  <!-- additional text blocks: floats -->
+  <!-- additional text blocks: non-floats -->
+  <!-- additions to the inline model -->
+  <!-- additional attributes for Chinese text -->
+  <xs:element name="metadata" type="dcterms:echo.metadata.content"/>
+  <xs:element name="font" type="xs:string"/>
+  <xs:element name="font-family" type="dcterms:echo.font-families"/>
+  <xs:element name="stylesheet" type="echo:echo.URI.datatype"/>
+  <xs:element name="echolink" type="echo:echo.URI.datatype"/>
+  <xs:element name="echodir" type="xs:string"/>
+  <xs:element name="place" substitutionGroup="dcterms:echo.gis.class">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dcterms:echo.place.content">
+          <xs:attributeGroup ref="dcterms:echo.place.attlist"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="time" substitutionGroup="dcterms:echo.gis.class">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dcterms:echo.time.content">
+          <xs:attributeGroup ref="dcterms:echo.time.attlist"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
