@@ -1,5 +1,0 @@
-import xml.etree.ElementTree as ET
-import sys
-
-data = ET.parse(sys.argv[1]).getroot()
-rows = 
