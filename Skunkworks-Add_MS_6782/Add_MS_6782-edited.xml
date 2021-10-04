@@ -29,7 +29,7 @@
 
       <c date="Mar 28, 2012" user="JS">
         <p>
-          <s xml:space="preserve">
+          <s xml:space="default">
 Lists of powers of 2 up to $ 2^{29} $, in standard denary (right) and in octonary (left).
 </s>
         </p>
