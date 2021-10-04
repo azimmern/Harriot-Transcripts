@@ -33,7 +33,7 @@
                         "body": {
                             "type": "TextualBody",
                             "format": "text/plain",
-                            "chars": "<xsl:value-of select="./echo:c/echo:p/echo:s/text()"/>"
+                            "chars": "<xsl:value-of select="./echo:c/echo:p/echo:s/normalize-space()"/>"
                 
                             },
                             "target": "http://iiif-cds.library.nd.edu/iiif/canvas/harriot_6782/<xsl:value-of select="./echo:pb/@o"/>"
