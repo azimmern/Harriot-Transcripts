@@ -36,7 +36,7 @@
                         </tr>
 
 
-                        <xsl:for-each select="/echo:echo/echo:text/echo:div[@type = 'page']">
+                        <xsl:for-each select="/echo:echo/echo:text/echo:div/echo:div[@type = 'page']">
 
                             <xsl:variable name="current-fileID" select="./echo:pb/@file"/>
                             <xsl:variable name="current-folioPage" select="./echo:pb/@o"/>
